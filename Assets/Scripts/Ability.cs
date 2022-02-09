@@ -123,12 +123,6 @@ namespace HOTG.Abilities
                 {
                     if (!effect.Play(target)) continue;
 
-                    // TODO (raphael) - refactor this latter
-                    //if (target.TryGetComponentInHierarchy(out Unit unit))
-                    //{
-                    //    unit.ReceiveEffect(effect);
-                    //}
-
                     if (effect.Outcomes != null)
                     {
                         foreach (IOutcome outcome in effect.Outcomes)
