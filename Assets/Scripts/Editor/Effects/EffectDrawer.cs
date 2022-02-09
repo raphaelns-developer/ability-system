@@ -2,7 +2,7 @@
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace HOTG.Abilities.Effects.Editor
+namespace AbilitySystem.Effects.Editor
 {
     [CustomPropertyDrawer(typeof(Effect), true)]
     public class EffectDrawer : PropertyDrawer

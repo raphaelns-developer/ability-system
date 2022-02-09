@@ -1,10 +1,10 @@
-﻿using HOTG.Abilities.Target;
+﻿using AbilitySystem.Target;
 using UnityEngine;
 using UnityEditor;
 using HOTG.CustomAttributes.Editor;
 using System;
 
-namespace HOTG.Abilities.Editor
+namespace AbilitySystem.Editor
 {
     public class AbilityEditorUtils
     {

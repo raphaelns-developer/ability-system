@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HOTG.Abilities.Target
+namespace AbilitySystem.Target
 {
     [Serializable]
     public class AnyTargetType : ITargetType

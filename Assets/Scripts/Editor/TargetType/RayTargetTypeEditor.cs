@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using HOTG.Abilities.Target;
+using AbilitySystem.Target;
 
-namespace HOTG.Abilities.Outcomes.Editor
+namespace AbilitySystem.Outcomes.Editor
 {
     [CustomPropertyDrawer(typeof(RayTargetType), true)]
     public class RayTargetTypeEditor : PropertyDrawer

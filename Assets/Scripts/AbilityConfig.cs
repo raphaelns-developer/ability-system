@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using HOTG.CustomAttributes;
-using HOTG.Abilities.Effects;
-using HOTG.Abilities.Outcomes;
-using HOTG.Abilities.Target;
+using AbilitySystem.Effects;
+using AbilitySystem.Outcomes;
+using AbilitySystem.Target;
 using UnityEngine;
 
-namespace HOTG.Abilities
+namespace AbilitySystem
 {
-    [CreateAssetMenu(fileName = "Ability", menuName = "Heroes of The Galaxy/Ability")]
+    [CreateAssetMenu(fileName = "AbilityConfig", menuName = "Ability System/Ability Confi")]
     public class AbilityConfig : ScriptableObject
     {
         public int ID => GetHashCode();

@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using HOTG.Abilities.Outcomes;
-using HOTG.Abilities.Effects;
-using HOTG.Abilities.Target;
+﻿using System.Collections.Generic;
+using AbilitySystem.Outcomes;
+using AbilitySystem.Effects;
+using AbilitySystem.Target;
 using UnityEngine;
 
-namespace HOTG.Abilities
+namespace AbilitySystem
 {
     public class Ability
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 using System;
 
-namespace HOTG.Abilities.Target
+namespace AbilitySystem.Target
 {
     [Serializable]
     public class RayTargetType : ITargetType

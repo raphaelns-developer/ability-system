@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using HOTG.Abilities.Target;
+using AbilitySystem.Target;
 using System;
 
-namespace HOTG.Abilities.Outcomes.Editor
+namespace AbilitySystem.Outcomes.Editor
 {
     [CustomPropertyDrawer(typeof(RectColliderTargetType), true)]
     public class RectColliderTargetTypeEditor : PropertyDrawer

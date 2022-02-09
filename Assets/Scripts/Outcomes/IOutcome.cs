@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using HOTG.Abilities.Effects;
+using AbilitySystem.Effects;
 
-namespace HOTG.Abilities.Outcomes
+namespace AbilitySystem.Outcomes
 {
     public interface IOutcome
     {

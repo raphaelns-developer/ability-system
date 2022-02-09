@@ -1,9 +1,9 @@
 ﻿using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-using HOTG.Abilities.Target;
+using AbilitySystem.Target;
 
-namespace HOTG.Abilities.Editor
+namespace AbilitySystem.Editor
 {
     [CustomEditor(typeof(AbilityConfig))]
     public class AbilityConfigEditor : UnityEditor.Editor

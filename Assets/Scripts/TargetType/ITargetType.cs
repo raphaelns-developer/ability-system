@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace HOTG.Abilities.Target
+namespace AbilitySystem.Target
 {
     public enum TargetType
     {
