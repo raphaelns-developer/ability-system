@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AbilitySystem.Outcomes;
 using AbilitySystem.Effects;
-using AbilitySystem.Target;
+using AbilitySystem.TargetType;
 using UnityEngine;
 
 namespace AbilitySystem
@@ -18,9 +18,6 @@ namespace AbilitySystem
         private float _timeCastAbility;
         public float TimeCastAbility { get => _timeCastAbility; }
 
-        private float _abilityLifeTime;
-        public float AbilityLifeTime { get => _abilityLifeTime; }
-
         private readonly int _maxOfTargets;
 
         private readonly List<IOutcome> _outcomes;
@@ -34,13 +31,12 @@ namespace AbilitySystem
         public List<IEffect> Effects => _effects;
 #endif
 
-        public Ability(int id, ITargetType targetType, float cooldown, float timeCastAbility, float abilityLifeTime, int maxTargets, List<IOutcome> outcomes, List<IEffect> effects, GameObject owner, object origin)
+        public Ability(int id, ITargetType targetType, float cooldown, float timeCastAbility, int maxTargets, List<IOutcome> outcomes, List<IEffect> effects, GameObject owner, object origin)
         {
             ConfigId = id;
             _targetType = targetType;
             _cooldown = cooldown;
             _timeCastAbility = timeCastAbility;
-            _abilityLifeTime = abilityLifeTime;
             _maxOfTargets = maxTargets;
             _outcomes = outcomes;
             _effects = effects;
@@ -62,44 +58,24 @@ namespace AbilitySystem
 
         public void CheckForTargets()
         {
-            float currentTime = 0;
-
             // Play abilities outcomes
             TriggerOutcomes();
 
-            if (_abilityLifeTime == 0)
+            List<Collider> targets = _targetType?.GetTargets(_ownerTransform, _overrideTargetLayer);
+            if (targets == null) return;
+
+            if (_maxOfTargets > 0 && targets.Count > _maxOfTargets)
             {
-                CheckForTargets();
-                return;
+                targets = targets.GetRange(0, _maxOfTargets);
             }
 
-            while (currentTime < _abilityLifeTime)
+            var objects = new List<GameObject>(targets.Count);
+            foreach (Collider collider in targets)
             {
-                CheckForTargets();
-
-                currentTime += Time.deltaTime;
+                objects.Add(collider.gameObject);
             }
 
-            void CheckForTargets()
-            {
-                currentTime += Time.deltaTime;
-
-                List<Collider> targets = _targetType?.GetTargets(_ownerTransform, _overrideTargetLayer);
-                if (targets == null) return;
-
-                if (_maxOfTargets > 0 && targets.Count > _maxOfTargets)
-                {
-                    targets = targets.GetRange(0, _maxOfTargets);
-                }
-
-                var objects = new List<GameObject>(targets.Count);
-                foreach (Collider collider in targets)
-                {
-                    objects.Add(collider.gameObject);
-                }
-
-                TriggerEffects(objects);
-            }             
+            TriggerEffects(objects);     
         }
 
         public void TriggerOutcomes()
@@ -161,7 +137,7 @@ namespace AbilitySystem
                 }
             }
             
-            return new Ability(config.ID, config.TargetTypeImpl, config.Cooldown, config.TimeCastAbility, config.AbilityLifeTime, config.MaxOfTargets, outcomes, effects, owner, origin);
+            return new Ability(config.ID, config.TargetTypeImpl, config.Cooldown, config.TimeCastAbility, config.MaxOfTargets, outcomes, effects, owner, origin);
         }
     }
 }

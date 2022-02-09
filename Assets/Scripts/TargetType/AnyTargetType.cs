@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AbilitySystem.Target
+namespace AbilitySystem.TargetType
 {
     [Serializable]
     public class AnyTargetType : ITargetType
     {
-        public TargetType Type => TargetType.ANY;
+        public TargetTypeItem Type => TargetTypeItem.ANY;
 
         public List<Collider> GetTargets(Transform owner, LayerMask overrideTargetLayer)
         {

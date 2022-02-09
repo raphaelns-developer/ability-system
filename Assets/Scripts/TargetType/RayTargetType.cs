@@ -2,12 +2,12 @@
 using UnityEngine;
 using System;
 
-namespace AbilitySystem.Target
+namespace AbilitySystem.TargetType
 {
     [Serializable]
     public class RayTargetType : ITargetType
     {
-        public TargetType Type => TargetType.RAY;
+        public TargetTypeItem Type => TargetTypeItem.RAY;
 
         [SerializeField]
         private float _distance = 0;

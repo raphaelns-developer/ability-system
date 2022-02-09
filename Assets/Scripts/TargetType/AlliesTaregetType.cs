@@ -2,12 +2,12 @@
 using UnityEngine;
 using System;
 
-namespace AbilitySystem.Target
+namespace AbilitySystem.TargetType
 {
     [Serializable]
     public class AlliesTargetType : ITargetType
     {
-        public TargetType Type => TargetType.ALLIES;
+        public TargetTypeItem Type => TargetTypeItem.ALLIES;
 
         [SerializeField]
         private bool _includeOwner;

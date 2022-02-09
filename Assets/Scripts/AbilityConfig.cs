@@ -2,7 +2,7 @@
 using HOTG.CustomAttributes;
 using AbilitySystem.Effects;
 using AbilitySystem.Outcomes;
-using AbilitySystem.Target;
+using AbilitySystem.TargetType;
 using UnityEngine;
 
 namespace AbilitySystem
@@ -13,7 +13,7 @@ namespace AbilitySystem
         public int ID => GetHashCode();
 
         [SerializeField]
-        private TargetType _targetType = TargetType.NONE;
+        private TargetTypeItem _targetType = TargetTypeItem.NONE;
         
         [SerializeReference] 
         private ITargetType _targetTypeImpl = null;
@@ -25,10 +25,6 @@ namespace AbilitySystem
         [SerializeField]
         private float _timeCastAbility;
         public float TimeCastAbility => _timeCastAbility;
-
-        [SerializeField]
-        private float _abilityLifeTime = 0;
-        public float AbilityLifeTime => _abilityLifeTime;
 
         [SerializeField]
         private int _maxOfTargets = 0;

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace AbilitySystem.Target
+namespace AbilitySystem.TargetType
 {
-    public enum TargetType
+    public enum TargetTypeItem
     {
         NONE,
         ANY,
@@ -16,7 +16,7 @@ namespace AbilitySystem.Target
 
     public interface ITargetType
     {
-        TargetType Type { get; }
+        TargetTypeItem Type { get; }
 
         List<Collider> GetTargets(Transform owner, LayerMask overrideTargetLayer);
 

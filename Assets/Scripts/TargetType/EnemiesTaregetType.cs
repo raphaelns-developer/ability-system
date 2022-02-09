@@ -2,12 +2,12 @@
 using UnityEngine;
 using System;
 
-namespace AbilitySystem.Target
+namespace AbilitySystem.TargetType
 {
     [Serializable]
     public class EnemiesTargetType : ITargetType
     {
-        public TargetType Type => TargetType.ENEMIES;
+        public TargetTypeItem Type => TargetTypeItem.ENEMIES;
 
         public List<Collider> GetTargets(Transform owner, LayerMask overrideTargetLayer)
         {

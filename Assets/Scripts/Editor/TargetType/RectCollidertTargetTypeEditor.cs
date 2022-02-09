@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using AbilitySystem.Target;
+using AbilitySystem.TargetType;
 using System;
 
 namespace AbilitySystem.Outcomes.Editor

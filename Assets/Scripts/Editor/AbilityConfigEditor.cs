@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-using AbilitySystem.Target;
+using AbilitySystem.TargetType;
 
 namespace AbilitySystem.Editor
 {
@@ -13,7 +13,6 @@ namespace AbilitySystem.Editor
         private SerializedProperty _cooldown;
         private SerializedProperty _timeCastAbility;
         private SerializedProperty _maxOfTargets;
-        private SerializedProperty _abilityLifeTime;
         private SerializedProperty _outcomes;
         private SerializedProperty _effects;
 
@@ -26,7 +25,6 @@ namespace AbilitySystem.Editor
             _targetTypeImpl = serializedObject.FindProperty("_targetTypeImpl");
             _cooldown = serializedObject.FindProperty("_cooldown");
             _timeCastAbility = serializedObject.FindProperty("_timeCastAbility");
-            _abilityLifeTime = serializedObject.FindProperty("_abilityLifeTime");
             _maxOfTargets = serializedObject.FindProperty("_maxOfTargets");
             _outcomes = serializedObject.FindProperty("_outcomes");
             _effects = serializedObject.FindProperty("_effects");
@@ -49,9 +47,9 @@ namespace AbilitySystem.Editor
 
             if (!string.IsNullOrEmpty(_targetTypeImpl.managedReferenceFullTypename) &&
                 !AbilityEditorUtils.IsCorrectType(
-                (TargetType)_targetType.enumValueIndex, _targetTypeImpl))
+                (TargetTypeItem)_targetType.enumValueIndex, _targetTypeImpl))
             {
-                _targetTypeImpl.managedReferenceValue = AbilityEditorUtils.GetTargetByType((TargetType)_targetType.enumValueIndex);
+                _targetTypeImpl.managedReferenceValue = AbilityEditorUtils.GetTargetByType((TargetTypeItem)_targetType.enumValueIndex);
                 serializedObject.ApplyModifiedProperties();
             }
         }
@@ -63,7 +61,7 @@ namespace AbilitySystem.Editor
 
         private void OnSceneGui(SceneView obj)
         {
-            AbilityEditorUtils.DrawTargetByType((TargetType)_targetType.enumValueIndex, _targetTypeImpl);
+            AbilityEditorUtils.DrawTargetByType((TargetTypeItem)_targetType.enumValueIndex, _targetTypeImpl);
         }
 
         public override void OnInspectorGUI()
@@ -76,7 +74,6 @@ namespace AbilitySystem.Editor
 
             _cooldown.floatValue = EditorGUILayout.Slider("Cooldown", _cooldown.floatValue, 0, 100, GUILayout.ExpandWidth(true));
             _timeCastAbility.floatValue = EditorGUILayout.Slider("Time to cast", _timeCastAbility.floatValue, 0, 100, GUILayout.ExpandWidth(true));
-            _abilityLifeTime.floatValue = EditorGUILayout.Slider("Life Time", _abilityLifeTime.floatValue, 0, 100, GUILayout.ExpandWidth(true));
             _maxOfTargets.intValue = EditorGUILayout.IntSlider("Max of targets", _maxOfTargets.intValue, 0, 100, GUILayout.ExpandWidth(true));            
 
             EditorGUILayout.Space();
@@ -100,7 +97,7 @@ namespace AbilitySystem.Editor
 
             if (EditorGUI.EndChangeCheck())
             {
-                _targetTypeImpl.managedReferenceValue = AbilityEditorUtils.GetTargetByType((TargetType)_targetType.enumValueIndex);
+                _targetTypeImpl.managedReferenceValue = AbilityEditorUtils.GetTargetByType((TargetTypeItem)_targetType.enumValueIndex);
             }
 
             EditorGUILayout.PropertyField(_targetTypeImpl);

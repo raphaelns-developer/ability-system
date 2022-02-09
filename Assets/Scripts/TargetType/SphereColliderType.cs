@@ -2,12 +2,12 @@
 using UnityEngine;
 using System;
 
-namespace AbilitySystem.Target
+namespace AbilitySystem.TargetType
 {
     [Serializable]
     public class SphereColliderTargetType : ITargetType
     {
-        public TargetType Type => TargetType.RECT_COLLIDER;
+        public TargetTypeItem Type => TargetTypeItem.RECT_COLLIDER;
 
         [SerializeField]
         private float _radius;
